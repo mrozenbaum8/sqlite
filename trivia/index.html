@@ -1,0 +1,92 @@
+ode st<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <meta charset="utf-8">
+        <title>Trivia!</title>
+        <script>
+            // TODO: Add code to check answers to questions
+            //Run script once DOM is loaded
+            document.addEventListener('DOMContentLoaded', function()
+            {
+                //When correct answer is clicked, change color to green.
+                let correct = document.querySelector('.true');
+                correct.addEventListener('click', function()
+                {
+                    correct.style.backgroundColor = 'green';
+                    document.querySelector('#feedback1').innerHTML = 'Correct answer!';
+                });
+
+                //When incorrect answer is clicked, change color to red.
+                let incorrects = document.querySelectorAll('.incorrect');
+
+                for (let i = 0; i < incorrects.length; i++)
+                {
+                    incorrects[i].addEventListener('click', function()
+                    {
+                        incorrects[i].style.backgroundColor = 'red';
+                        document.querySelector('#feedback1').innerHTML = 'Incorrect answer!';
+                    });
+                }
+
+                //Check open-ended question.
+
+                document.querySelector('#check').addEventListener('click', function()
+                {
+                    let input = document.querySelector('input');
+                    if (input.value == 'Moshe Rabeinu')
+                    {
+                        input.style.backgroundColor = 'green';
+                        document.querySelector('#feedback2').innerHTML = 'Correct answer!';
+                    }
+                    else
+                    {
+                        input.style.backgroundColor = 'red';
+                        document.querySelector('#feedback2').innerHTML = 'Incorrect answer!';
+                    }
+
+                });
+
+            });
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+
+                <h3>How many Red Heifers where burnt throughtout the generations?</h3>
+
+                <button class="incorrect">2 red heifer</button>
+                <button class="incorrect">3 red heifers</button>
+                <button class="incorrect">6 red heifers</button>
+                <button class="true">9 red heifers</button>
+
+                <p id="feedback1"></p>
+
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <!-- TODO: Add free response question here -->
+                <h3>Who burnt the first one?</h3>
+
+                <form>
+                    <input type="text"></input>
+                    <button id="check">Check answer</button>
+                </form>
+
+                <p id="feedback2"></p>
+
+            </div>
+        </div>
+    </body>
+</html>
